@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Demo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
         String rutaDriver = "C:\\Users\\domingo.saavedra\\Documents\\BCI_Selenium\\src\\test\\resources\\drivers\\chromedriver.exe";
 
@@ -15,6 +15,41 @@ public class Demo {
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://www.google.cl");
+
+        System.out.println("EL titulo del sitio es: "+driver.getTitle());
+
+        System.out.println("La url del sitio es: "+driver.getCurrentUrl());
+
+        Thread.sleep(5000);
+
+        driver.navigate().to("https://www.tsoftglobal.com");
+
+        System.out.println("EL titulo del sitio es: "+driver.getTitle());
+
+        System.out.println("La url del sitio es: "+driver.getCurrentUrl());
+
+        Thread.sleep(5000);
+
+        driver.navigate().back();
+
+        Thread.sleep(2000);
+
+        driver.navigate().refresh();
+
+        Thread.sleep(2000);
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+
+        driver.manage().window().fullscreen();
+
+        Thread.sleep(2000);
+
+        driver.manage().window().maximize();
+
+        Thread.sleep(2000);
+
+        driver.quit();
+
 
     }
 }
