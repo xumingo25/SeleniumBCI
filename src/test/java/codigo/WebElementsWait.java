@@ -57,11 +57,12 @@ public class WebElementsWait {
 
         telefono.sendKeys("99998765");
 
-        js.executeScript("arguments[0].scrollIntoView();", telefono);
-
         WebElement correo = driver.findElement(By.name("correoElectronico"));
 
         js.executeScript("arguments[0].scrollIntoView();", correo);
+
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_PAGE_DOWN);
 
         correo.sendKeys("corroe@algo.com");
 
@@ -75,11 +76,8 @@ public class WebElementsWait {
             btnContinuar.click();
         }
 
-        WebElement btnRetomar = driver.findElement(By.xpath("//button[contains(text(),'RETOMAR')]"));
-        js.executeScript("arguments[0].scrollIntoView();", btnRetomar);
-        js.executeScript("window.scrollBy(0,-950)", "");
 
-        Robot robot = new Robot();
+
         robot.keyPress(KeyEvent.VK_PAGE_UP);
 
 
@@ -96,6 +94,9 @@ public class WebElementsWait {
         System.out.println("Titulo Error: "+ textoTituloError);
 
         System.out.println("Descrpción Error: "+ textoDescError);
+
+        WebElement btnRetomar = driver.findElement(By.xpath("//button[contains(text(),'RETOMAR')]"));
+        js.executeScript("arguments[0].scrollIntoView();", btnRetomar);
 
         System.out.println("Btn RETOMAR desplegado: "+ btnRetomar.isEnabled());
 
