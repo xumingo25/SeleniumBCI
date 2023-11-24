@@ -1,6 +1,7 @@
 package codigo;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,20 @@ import java.util.concurrent.TimeUnit;
 
 
 public class WebElementsWaitSpotify {
-    public static void main(String[] args) throws InterruptedException {
+
+    @Test
+    public void CP002_ya_se_me_ocurrira(){
+        Assertions.assertTrue(true);
+    }
+
+    @Test
+    public void CP003_otra_cosa(){
+        Assertions.assertTrue(true);
+    }
+
+
+    @Test
+    public void CP001_Creacion_Cta_Spotify() throws InterruptedException {
 
         String rutaProyecto = System.getProperty("user.dir");
 
@@ -40,7 +54,7 @@ public class WebElementsWaitSpotify {
         driver.manage().window().maximize();
 
 
-        driver.findElement(By.id("username")).sendKeys("emailadasds11dfsd23@algo.com");
+        driver.findElement(By.id("username")).sendKeys("emas11dfsd23@algo.com");
 
         Thread.sleep(1000);
         driver.findElement(By.xpath("//button[@data-testid='submit']")).click();
