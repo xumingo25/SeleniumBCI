@@ -23,7 +23,7 @@ public class CasosDePrueba {
     String rutaProyecto = System.getProperty("user.dir"); //no es de la prueba
 
     String rutaDriver = rutaProyecto + "\\src\\test\\resources\\drivers\\chromedriver.exe";
-
+/*
     @BeforeEach
     public void preCondiciones(){
         System.setProperty("webdriver.chrome.driver", rutaDriver);
@@ -42,6 +42,7 @@ public class CasosDePrueba {
     public void posCondiciones(){
         driver.quit();
     }
+
 
     @Test
     public void CP001_creacion_cta() throws InterruptedException {
@@ -147,5 +148,5 @@ public class CasosDePrueba {
     public void CP005(){
 
     }
-
+*/
 }

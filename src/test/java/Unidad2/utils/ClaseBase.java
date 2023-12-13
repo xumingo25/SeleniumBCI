@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.Key;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ClaseBase {
     //Atributos
@@ -37,6 +38,22 @@ public class ClaseBase {
         elemento.click();
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
+    }
+
+    public void setWait(WebDriverWait wait) {
+        this.wait = wait;
+    }
+
     public String obtenerTexto(WebElement elemento){
         return elemento.getText();
     }
@@ -45,8 +62,13 @@ public class ClaseBase {
         return driver.findElement(localizador).getText();
     }
 
-    public void esperarXSegundos(int miliSegundos) throws InterruptedException {
-        Thread.sleep(miliSegundos);
+    public void esperarXSegundos(int miliSegundos) {
+        try {
+            Thread.sleep(miliSegundos);
+        } catch (InterruptedException e) {
+            System.out.println("Ha ocurrido un error :/");
+            throw new RuntimeException(e);
+        }
     }
 
     public void agregarTexto(By localizador, String texto){
@@ -82,15 +104,21 @@ public class ClaseBase {
     }
 
     public WebElement esperarPresenciaWebElement(By localizador){
-        wait = new WebDriverWait(driver,30);
+        wait = new WebDriverWait(driver,5);
         WebElement elementoEsperado = wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
         return elementoEsperado;
     }
 
     public WebElement esperarPorElementoAClickear(By localizador){
-        wait = new WebDriverWait(driver,30);
+        wait = new WebDriverWait(driver,5);
         WebElement elementoEsperado = wait.until(ExpectedConditions.elementToBeClickable(localizador));
         return elementoEsperado;
+    }
+
+    public void manejoEsperasElementosWeb(int segundos){
+        this.driver.manage().timeouts().implicitlyWait(segundos, TimeUnit.SECONDS);
+        this.driver.manage().timeouts().setScriptTimeout(segundos,TimeUnit.SECONDS);
+        this.driver.manage().timeouts().pageLoadTimeout(segundos,TimeUnit.SECONDS);
     }
 
     //Conexion Driver
@@ -125,7 +153,15 @@ public class ClaseBase {
         comboBox.selectByValue(value);
     }
 
-    
+    public boolean estaDesplegado(WebElement elemento){
+        try {
+            return elemento.isDisplayed();
+        }catch (Exception ex){
+            System.out.println("Ha ocurrido un error validando elemento web");
+            System.out.println(ex.getStackTrace());
+            return false;
+        }
+    }
 
 
 
