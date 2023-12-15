@@ -104,13 +104,13 @@ public class ClaseBase {
     }
 
     public WebElement esperarPresenciaWebElement(By localizador){
-        wait = new WebDriverWait(driver,5);
+        wait = new WebDriverWait(driver,15);
         WebElement elementoEsperado = wait.until(ExpectedConditions.presenceOfElementLocated(localizador));
         return elementoEsperado;
     }
 
     public WebElement esperarPorElementoAClickear(By localizador){
-        wait = new WebDriverWait(driver,5);
+        wait = new WebDriverWait(driver,15);
         WebElement elementoEsperado = wait.until(ExpectedConditions.elementToBeClickable(localizador));
         return elementoEsperado;
     }
@@ -161,6 +161,10 @@ public class ClaseBase {
             System.out.println(ex.getStackTrace());
             return false;
         }
+    }
+
+    public String obtenerAtributoAriaLabel(By localizador){
+        return driver.findElement(localizador).getAttribute("aria-label");
     }
 
 
