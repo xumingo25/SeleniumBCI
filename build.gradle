@@ -2,6 +2,8 @@ plugins {
     id 'java'
 }
 
+
+
 group = 'com.bci.curso.tsoft'
 version = '1.0-SNAPSHOT'
 
@@ -14,8 +16,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
-    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    implementation 'org.apache.poi:poi-ooxml:4.1.2'
 }
 
 test {
